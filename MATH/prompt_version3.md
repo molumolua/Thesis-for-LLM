@@ -45,15 +45,17 @@ You SHOULD make sure the triples are in the order of their appearances in the or
 Strings in #Initial Premises# indicate the initial premise.
 You SHOULD complicate the #Extract Triples# using the following method:
 Check each step in the process of solution and extract detailed premises, method and the conclusion.
+Each triple in #Extract Triples# SHOULD be fine-grained.
 Premises in LATER steps MUST be  conclusion in FORMER steps or #Initial Premises#.
 FORMER conclusion are NOT ALLOWED to appear in LATER conclusion.
 #Initial Premise#  are NOT ALLOWED to appear in conclusion.
 The conclusion in each triple SHOULD contain ONLY ONE mathematical result.
+Try you best to find the implied premise for the conclusion in each triple. 
 You SHOULD check the connection between each step in #Original Solution# and reflect the connection in the exacted triples.
-The method in each triple is ONLY ALLOWED to use information in corresponding premises in the same triple.
-All the calculation MUST be done in the method in each triple.
-The conclusion should describe clearly the meaning of the method and avoid being verbose.
-The final conclusion in the #Extract Triples# MUST be the answer to the #Original Question#.
+ANY other information is STRICTLY forbidden to use in the method of each triple in #Extract Triples# except its corresponding premises in the same triple.
+The method in each triple SHOULD perform All the mathematical calculation process and get calculation results.
+The conclusion should describe the detailed meaning of the method.
+The final conclusion in the #Extract Triples# MUST answer the #Original Question#.
 Try your best to make sure we can reconstruct the solution only using #Extract Triples#.
 #Initial Premises#:
 <Here is Premises.>
@@ -62,6 +64,7 @@ Try your best to make sure we can reconstruct the solution only using #Extract T
 #Original Solution#:
 <Here is instruction.>
 #Extract Triples#:
+
 
 ```json
 
@@ -99,7 +102,10 @@ Try your best to make sure we can reconstruct the solution only using #Extract T
 ]
 
 
+```
 
+```json
+我觉得应该更加细粒度的提取。
 
 
 ```
@@ -134,7 +140,7 @@ Try your best to make sure each triple in original #Process Triples# is indispen
 
 { "premises": [ "The common ratio $r$ is $(\frac{5}{11})^{\frac{1}{6}}$", "The fifth term of a geometric sequence of positive numbers is $11$." ], "method": "Use the expression for the fifth term in terms of the first term and common ratio, $a \cdot r^4 = 11$, and substitute the given common ratio to find the first term $a$.", "conclusion": "The first term of the sequence, $a$, is $11 \div (\frac{5}{11})^{\frac{2}{3}} = 11 \cdot (\frac{11}{5})^{\frac{2}{3}}$." }
 
-这一步开始算错了，2/3 - 19/6 = - 15/6。尝试了GPT4，4o，o1都能正确回答这个问题 log10（第12项）
+这一步开始算错了，2/3 - 19/6 = - 15/6 != - 13/6。尝试了GPT4，4o，o1都能正确回答这个问题 log10（第12项）
 { "premises": [ "The first term of the sequence, $a$, is $11 \cdot (\frac{11}{5})^{\frac{2}{3}}$.", "The common ratio $r$ is $(\frac{5}{11})^{\frac{1}{6}}$." ], "method": "Calculate the value of the twentieth term of the geometric sequence using the first term $a$ and the common ratio $r$, expressed as $a \cdot r^{19}$.", "conclusion": "The twentieth term of the geometric sequence is $11 \cdot (\frac{11}{5})^{\frac{2}{3}} \cdot (\frac{5}{11})^{\frac{19}{6}} = 11 \cdot (\frac{11}{5})^{\frac{2}{3} - \frac{19}{6}} = 11 \cdot (\frac{11}{5})^{-\frac{13}{6}}$." }
 
 
@@ -150,7 +156,7 @@ Try your best to make sure each triple in original #Process Triples# is indispen
 
 两个问题：
 - 从何处断开？ 甚至其实只取一个片段都是可以的。（这里我是人为观察出来的，有些问题的求解步骤是类似的或者有共性，类似于数列求解，会求首项、公比等等，这种求解步骤适合往后延申。有些步骤是问题特化的，例如求解第八项的数值，如果是问题特化的结论，感觉很难进化。应该“变异”换成一个更难的特化问题？）
-  - 如何判断两种不同的步骤？其实有很大一部分问题可以说是完全特化的，例如鸡兔同笼问题，共性问题往往有一个解题模板，几何问题等等。
+  - 如何判断两种不同的步骤？其实有很大一部分问题可以说是完全特化的，例如鸡兔同笼问题，共性问题往往有一个解题模板，几何问题、数列问题等等。
 - 尝试能否让大模型先生成下一步想求的目标，再生成计算过程。(问题导向，这样可以把所有已知结论转化成条件，说不定从特化结论中也能获取一些新的信息)
 
 
@@ -191,7 +197,6 @@ Adding premises,method and conclusion of #Constructed Quadruple# to #Process Tri
 <Here is Process Triples.>
 #Constructed Quadruple#:
 
-- 修改意见 应该让method进行（perform）计算，问题尽可能避免产生中间结论，尝试利用一些更加高级的技巧？
 ```json
 { "premises": [ "$r^6 = \frac{5}{11}$" ], "method": "Using the known value of $r^6 = \frac{5}{11}$, find $r$ by calculating the sixth root of $\frac{5}{11}$. Express the first term $a$ of the geometric sequence using the relationship $a = \frac{11}{r^4}$, derived from the given information that the fifth term $a r^4 = 11$.", "conclusion": "The first term of the geometric sequence is $\frac{11}{(\frac{5}{11})^{2/3}}$ simplified to $\frac{11 \times 11^{2/3}}{5^{2/3}}$." }
 
@@ -206,20 +211,57 @@ Adding premises,method and conclusion of #Constructed Quadruple# to #Process Tri
 
 
 ```
+- 修改意见 应该让method进行（perform）计算，问题尽可能避免产生中间结论，尝试利用一些更加高级的技巧？
+- method 避免使用类似的方法
+- question需要使得每个步骤都有意义，而不是我们可以跳过某些triple去尝试解决这个问题。
+- process triple是解决这个question的一部分。
+- 可以指定method使用的知识技巧的水平，小学，初中，高中，本科早期，本科后期，研究生水平，研究水平 
+- [elementary school level,middle school level,high school level,early undergraduate-level，late undergraduate-level,graduate-level,research-level]
+- 我认为可能被原始triple影响了，应该直接分成必选条件和可选条件。
+
+
+
+
+- 生成一个问题和一个solution
+- 这种问题“有点难”避免我们可以通过其他步骤更快的到达答案。（把条件组织起来？）
+You are a Mathematics Expert in constructing mathematical problems and solutions.
+Your target is to construct the premises for ONE question in #Constructed Premises# , the constructed question in #Constructed Question# and corresponding solution in #Constructed Solution# based on the given #Required Premises# and #Optional Premises#.
+The #Constructed Premises# SHOULD be in the same format as #Required Premises# and #Optional Premises#.
+You SHOULD complicate the #Constructed Premises# ,#Constructed Question# and  #Constructed Solution# using the following method:
+The #Constructed Premises# MUST contain #Required Premises# , while #Optional Premises# are optional.
+The #Constructed Question# MUST treat the  #Required Premises# as key information.
+The #Constructed Question# SHOULD require *early undergraduate-level* mathematical skills to solve.
+The #Constructed Question# MUST raise ONLY ONE question.
+You can add ONE premise in the #Constructed Premises# to make the #Constructed Question# solveable and meet the above requirements. 
+The #Constructed Solution# SHOULD be LIMITED to Less than or equal to three detailed steps.
+The #Constructed Solution# SHOULD AVOID generate ANY premises in #Required Premises# , #Optional Premises# or #Constructed Premises#.
+ANY assumption, supposition, new scenario or new case is STRICTLY forbidden in the method of #Constructed Solution#.
+You MUST generate ONE mathematical conclusion with a simplified number WITHOUT approximation in #Constructed Solution# answering the question. 
+The #Constructed Solution# SHOULD avoid being verbose.
+#Required Premises#:
+[
+    "The eighth term of the sequence is $\\sqrt{55}$."
+]
+#Optional Premises#:
+[
+    "The fifth term of a geometric sequence of positive numbers is $11$.",
+    "The eleventh term of the geometric sequence is $5$.",
+    "$r^6 = \\frac{5}{11}$",
+    "$r^3 = \\sqrt{\\frac{5}{11}}$",
+    "$11r^3 = \\sqrt{55}$"
+]
+#Constructed Premises#:
+
+#Constructed Question#:
+
+#Constructed Solution#:
+
 
 ```json
 
-
-
 ```
 
-
-
-
-
-
-
-
+取消独占一行或多行的任何latex数学公式或符号，将全部的公式改成只用$包裹起来的markdown行内公式。
 ## 消除进化失败
 - 用method和给定的premise列，分析它运用了哪些premise，如果没有用到必选premise 判定失败。
 - check method中的计算是否正确
