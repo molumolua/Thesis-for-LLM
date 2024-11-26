@@ -18,6 +18,7 @@ Try your best to make sure we can reconstruct the problem using the extracted #M
 #Original Problem#:
 <Here is instruction.>
 #Mathematical Premises#:
+
 #Mathematical Question#:
 
 
@@ -36,6 +37,17 @@ Try your best to make sure we can reconstruct the problem using the extracted #M
 #Mathematical Question#:
 What is the eighth term of the sequence? Express your answer in simplest radical form.
 
+
+[
+    "The series is a geometric series with first term 1 and common ratio 7",
+    "The series has 2005 terms, from $7^0$ to $7^{2004}$",
+    "We are interested in the remainder when the sum of this series is divided by 1000"
+]
+
+Determine the value of $N$, the remainder when $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by $1000$.
+
+
+
 ### 细粒度提取每一步条件，方法，结论
 You are a Mathematics Expert in the field of extracting key information in the process.
 Your target is to extract the triple of {premises, method and conclusion} in each step of a given mathematical solution process in #Original Solution#.
@@ -46,16 +58,17 @@ Strings in #Initial Premises# indicate the initial premise.
 You SHOULD complicate the #Extract Triples# using the following method:
 Check each step in the process of solution and extract detailed premises, method and the conclusion.
 Each triple in #Extract Triples# SHOULD be fine-grained.
-Premises in LATER steps MUST be  conclusion in FORMER steps or #Initial Premises#.
+Premises in LATER steps MUST STRICTLY equal to conclusions in FORMER steps or #Initial Premises#.
 FORMER conclusion are NOT ALLOWED to appear in LATER conclusion.
 #Initial Premise#  are NOT ALLOWED to appear in conclusion.
 The conclusion in each triple SHOULD contain ONLY ONE mathematical result.
-Try you best to find the implied premise for the conclusion in each triple. 
+Try you best to find the implied premise used in the method and conclusion in each triple. 
 You SHOULD check the connection between each step in #Original Solution# and reflect the connection in the exacted triples.
-ANY other information is STRICTLY forbidden to use in the method of each triple in #Extract Triples# except its corresponding premises in the same triple.
+ANY other information is STRICTLY forbidden to use in the method and conclusion of each triple in #Extract Triples# except its corresponding premises in the same triple.
 The method in each triple SHOULD perform All the mathematical calculation process and get calculation results.
-The conclusion should describe the detailed meaning of the method.
-The final conclusion in the #Extract Triples# MUST answer the #Original Question#.
+The conclusion of each triple SHOULD be an intermediate conclusion on this question and describe clearly.
+The conclusion of the LAST triple in the #Extract Triples# MUST answer the #Original Question# in  detail.
+Split the conclusion into two conclusions if it contains more than ONE conclusions.
 Try your best to make sure we can reconstruct the solution only using #Extract Triples#.
 #Initial Premises#:
 <Here is Premises.>
@@ -105,7 +118,32 @@ Try your best to make sure we can reconstruct the solution only using #Extract T
 ```
 
 ```json
-我觉得应该更加细粒度的提取。
+我觉得应该更加细粒度的提取。但这个问题和solution并不够好。
+[
+    {
+        "premises": [
+            "The series is a geometric series with first term 1 and common ratio 7",
+            "The series has 2005 terms, from $7^0$ to $7^{2004}$"
+        ],
+        "method": "Apply the formula for the sum of a geometric series, $S_n = a \\frac{r^n - 1}{r - 1}$, where $a$ is the first term, $r$ is the common ratio, and $n$ is the number of terms.",
+        "conclusion": "$1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{6}$"
+    },
+    {
+        "premises": [
+            "We are interested in the remainder when the sum of this series is divided by 1000",
+            "$1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{6}$"
+        ],
+        "method": "Use Fermat-Euler's theorem, noting that $\\varphi(1000) = 400$ to simplify $7^{2005}$ mod 1000. $7^{2005} \\equiv 7^{400 \\cdot 5 + 5} \\pmod{1000}$ simplifies to $7^5$ due to $7^{400} \\equiv 1 \\pmod{1000}$.",
+        "conclusion": "$\\frac{7^{2005}-1}{6} \\equiv \\frac{7^5 - 1}{6} \\pmod{1000}$"
+    },
+    {
+        "premises": [
+            "$\\frac{7^{2005}-1}{6} \\equiv \\frac{7^5 - 1}{6} \\pmod{1000}$"
+        ],
+        "method": "Calculate $7^5 - 1$ and then divide by 6, finally applying modulo 1000 to the result.",
+        "conclusion": "The remainder when $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by 1000 is $801$"
+    }
+]
 
 
 ```
@@ -232,7 +270,7 @@ The #Constructed Premises# MUST contain #Required Premises# , while #Optional Pr
 The #Constructed Question# MUST treat the  #Required Premises# as key information.
 The #Constructed Question# SHOULD require *early undergraduate-level* mathematical skills to solve.
 The #Constructed Question# MUST raise ONLY ONE question.
-You can add ONE premise in the #Constructed Premises# to make the #Constructed Question# solveable and meet the above requirements. 
+You SHOULD add ONE premise in the #Constructed Premises# to make the #Constructed Question# solveable and meet the above requirements. 
 The #Constructed Solution# SHOULD be LIMITED to Less than or equal to three detailed steps.
 The #Constructed Solution# SHOULD AVOID generate ANY premises in #Required Premises# , #Optional Premises# or #Constructed Premises#.
 ANY assumption, supposition, new scenario or new case is STRICTLY forbidden in the method of #Constructed Solution#.
@@ -240,15 +278,14 @@ You MUST generate ONE mathematical conclusion with a simplified number WITHOUT a
 The #Constructed Solution# SHOULD avoid being verbose.
 #Required Premises#:
 [
-    "The eighth term of the sequence is $\\sqrt{55}$."
+    "The eighth term of the sequence, $11r^3$, simplifies to $\\sqrt{55}$.
 ]
 #Optional Premises#:
 [
     "The fifth term of a geometric sequence of positive numbers is $11$.",
     "The eleventh term of the geometric sequence is $5$.",
     "$r^6 = \\frac{5}{11}$",
-    "$r^3 = \\sqrt{\\frac{5}{11}}$",
-    "$11r^3 = \\sqrt{55}$"
+    "$r^3 = \\sqrt{\\frac{5}{11}}$.",
 ]
 #Constructed Premises#:
 
@@ -256,10 +293,28 @@ The #Constructed Solution# SHOULD avoid being verbose.
 
 #Constructed Solution#:
 
-
 ```json
 
 ```
+
+用concise中的方法，把我们的结构组织成一个树形（ordered sentence 不太明白他的逻辑，但我用反拓扑序），然后生成答案。
+
+You are a Mathematics Expert in constructing mathematical problems and solutions.
+Your target is to construct ONE question in #Constructed Question# and corresponding solution in #Constructed Solution# based on several paragraphs with multiple ordered premises in #Ordered Premises#.
+Each paragraph of Premises in #Ordered Premises# are organized in order, the final premise of each paragraph SHOULD be indispensable for the constructed question and solution.
+You SHOULD complicate the #Constructed Question# and  #Constructed Solution# using the following method:
+The #Constructed Question# SHOULD require *research-level* mathematical skills to solve.
+The #Constructed Question# MUST raise ONLY ONE question.
+You CAN make ONE constraint in the #Constructed Question# to make the #Constructed Question# solveable and meet the above requirements. 
+The #Constructed Solution# SHOULD be LIMITED to less than or equal to three detailed steps.
+ANY assumption, supposition, new scenario or new case is STRICTLY forbidden in the method of #Constructed Solution#.
+You MUST generate ONE mathematical conclusion with a simplified number WITHOUT approximation in #Constructed Solution# answering the question. 
+The #Constructed Solution# SHOULD avoid being verbose.
+#Ordered Premises#:
+We are interested in the remainder when the sum of this series is divided by 1000.The series is a geometric series with first term 1 and common ratio 7.The series has 2005 terms, from $7^0$ to $7^{2004}$.$1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{6}$.$\\frac{7^{2005}-1}{6} \\equiv \\frac{7^5 - 1}{6} \\pmod{1000}$.The remainder when $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by 1000 is $801$.
+#Constructed Question#:
+
+#Constructed Solution#:
 
 取消独占一行或多行的任何latex数学公式或符号，将全部的公式改成只用$包裹起来的markdown行内公式。
 ## 消除进化失败
