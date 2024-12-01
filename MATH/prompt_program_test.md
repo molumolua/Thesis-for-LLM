@@ -85,7 +85,7 @@ You should only write code blocks.
 增强后的结果：
 ```python
 #增强数值本身已经存在一定的风险性
-#1 问题得符合现实的常识，每周不超过7天，都得是整数
+#1 问题得符合现实的常识，每周不超过7天，都得是整数等等
 def solution():
     computers_initial = 9
     computers_per_day = 7  # Increased the number of computers added per day
@@ -95,7 +95,7 @@ def solution():
     result = computers_total
     return result
 
-#2 有一些困难问题写成代码只能写成这种数值运算，增强数值之后不一定仍然正确了
+#2 有一些困难问题写成代码只能写成这种数值运算，增强数值之后不一定仍然正确的表达了含义。
 import math
 def solution():
     total_ways = math.factorial(10)
@@ -108,7 +108,7 @@ def solution():
     return result
 ```
 ## 逻辑增强
-
+- 多增加一些不同的情况，特例等等
 You are a Programming Expert in the field of rewriting python program.
 You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
 The python program aims to solve one mathematical question, and the variable names indicate their actual meaning.
@@ -191,6 +191,7 @@ def solution():
 ## 循环增强
 - 我们在数学中一般不会使用循环，而是使用公式计算，这会使得一些问题可能在低循环的时候（1或者很少次）很容易计算，但是到高循环（1000，10000）时需要使用公式计算很难。
 - 但是对于程序来说复杂程度并不会很高。
+- 如果是增加循环layers，则会增加问题的复杂度。
   
 You are a Programming Expert in the field of rewriting python program.
 You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
