@@ -107,6 +107,12 @@
         "level": "Level 5",
         "type": "Number Theory",
         "solution": "Rewrite the expression as\\[4(5x + 1)(5x + 3)(5x+5)\\]Since $x$ is odd, let $x = 2n-1$. The expression becomes\\[4(10n-4)(10n-2)(10n)=32(5n-2)(5n-1)(5n)\\]Consider just the product of the last three terms, $5n-2,5n-1,5n$, which are consecutive. At least one term must be divisible by $2$ and one term must be divisible by $3$ then. Also, since there is the $5n$ term, the expression must be divisible by $5$. Therefore, the minimum integer that always divides the expression must be $32 \\cdot 2 \\cdot 3 \\cdot 5 = \\boxed{960}$.\nTo prove that the number is the largest integer to work, consider when $x=1$ and $x = 5$. These respectively evaluate to be $1920,\\ 87360$; their greatest common factor is indeed $960$."
+    },
+    {
+        "problem": "Mary chose an even $4$-digit number $n$. She wrote down all the divisors of $n$ in increasing order from left to right: $1,2,...,\\dfrac{n}{2},n$. At some moment Mary wrote $323$ as a divisor of $n$. What is the smallest possible value of the next divisor written to the right of $323$?\n$\\textbf{(A) } 324 \\qquad \\textbf{(B) } 330 \\qquad \\textbf{(C) } 340 \\qquad \\textbf{(D) } 361 \\qquad \\textbf{(E) } 646$\n",
+        "level": "Level 5",
+        "type": "Number Theory",
+        "solution": "Since prime factorizing $323$ gives you $17 \\cdot 19$, the desired answer needs to be a multiple of $17$ or $19$, this is because if it is not a multiple of $17$ or $19$, $n$ will be more than a $4$ digit number. For example, if the answer were to instead be $324$, $n$ would have to be a multiple of $2^2 * 3^4 * 17 * 19$ for both $323$ and $324$ to be a valid factor, meaning $n$ would have to be at least $104652$, which is too big. Looking at the answer choices, $\\text{(A) }324$ and $\\text{(B) }330$ are both not a multiple of neither 17 nor 19, $\\text{(C) }340$ is divisible by $17$. $\\text{(D) }361$ is divisible by $19$, and $\\text{(E) }646$ is divisible by both $17$ and $19$. Since $\\boxed{340}$ is the smallest number divisible by either $17$ or $19$ it is the answer. Checking, we can see that $n$ would be $6460$, a four-digit number. Note that $n$ is also divisible by $2$, one of the listed divisors of $n$. (If $n$ was not divisible by $2$, we would need to look for a different divisor)"
     }
 
 ]

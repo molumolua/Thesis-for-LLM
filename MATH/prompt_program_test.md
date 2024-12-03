@@ -55,8 +55,6 @@ def solution():
     return result
 ```
 Question:
-
-
 # 进化问题
 尝试给它指定方向进化
 - 数值增强（增大数值，或者改成浮点数、分数、复数等等）
@@ -116,6 +114,8 @@ You should fill the #Rewritten Program# part using following method:
 You should rewrite the #Given Program# and evolve it by enhancing the logical judgment conditions.
 You should make sure the enhanced logical judgment ​​are consistent with common sense and logically reasonable.
 You are allowed to add new variables to make the whole program solution coherent and faithful.
+Must make sure the #Rewritten Program# aims to solve ONE definte question.
+Avoid calculating anything unnecessary.
 You should only write code blocks.
 #Given Program#:
 ```
@@ -152,39 +152,6 @@ def solution():
     # Return the final total, ensuring no unrealistic overshooting
     return total_computers
 #Question: There were 9 computers in the server room. Five computers were added each day from Monday to Thursday. However, due to budget constraints, only 4 computers were added on Tuesday, and a special promotion on Wednesday allowed 3 extra computers to be added that day. What is the maximum number of computers that can be in the server room by Thursday, considering a limit of 40 computers?
-
-import math
-
-def solution():
-    # Total arrangements of all individuals (10 daughters + 5 boys)
-    total_ways = math.factorial(10 + 5)
-    
-    # Arrangements for the daughters (5 distinct daughters)
-    daughter_arrangements = math.factorial(5)
-    
-    # Total ways to place 5 boys in 6 available gaps between daughters
-    boy_positions = math.comb(6, 5) * math.factorial(5)
-    
-    # Calculating the number of ways where no two boys are adjacent to each other
-    no_boys_next_to_each_other_ways = daughter_arrangements * boy_positions
-    
-    # Enhanced conditions to exclude arrangements with adjacent boys
-    # Scenario 1: Boys can be arranged at any of the 6 positions (this is where we have valid non-adjacent placements).
-    valid_ways_for_boys = boy_positions
-    
-    # Scenario 2: Calculate all possible placements where boys could be together or separately
-    # Total ways to place the 5 boys without restrictions
-    unrestricted_boy_ways = math.comb(15, 5) * math.factorial(5)
-    
-    # Scenario 3: Calculate when boys are definitely adjacent (consider as a block)
-    boys_as_a_block_ways = math.factorial(6)  # 6 total groups (5 blocks of boys + 1 block of daughters)
-    
-    # Calculating the difference in arrangements considering the adjacency rule
-    valid_arrangements = total_ways - no_boys_next_to_each_other_ways
-    
-    # Enhanced output reflecting all cases
-    result = valid_arrangements
-    return result
 
 ```
 
@@ -231,27 +198,7 @@ def solution():
     result = total_computers
     return result
 
-# Question: There were nine computers in the server room. Five more computers were installed each day from Monday to Thursday during the first week. During the second week, five computers were installed each day from Friday to Sunday. How many computers are now in the server room after two weeks?、
-
-import math
-
-def solution():
-    total_ways = math.factorial(7)
-    
-    # Increased complexity by adding an extra level of permutations
-    daughter_arrangements = math.factorial(3)
-    
-    # Add an extra nested loop layer for more complex positions
-    boy_positions_total = 0
-    for gap in range(1, 5):
-        for boy in range(4):
-            # Now calculating positions for boys in different gaps more dynamically
-            boy_positions_total += math.comb(4, gap) * math.factorial(gap) * math.comb(4, boy)
-    
-    no_boys_next_to_each_other_ways = daughter_arrangements * boy_positions_total
-    
-    result = total_ways - no_boys_next_to_each_other_ways
-    return result
+# Question: There were nine computers in the server room. Five more computers were installed each day from Monday to Thursday during the first week. During the second week, five computers were installed each day from Friday to Sunday. How many computers are now in the server room after two weeks?
 
 
 

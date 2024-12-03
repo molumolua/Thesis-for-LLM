@@ -58,3 +58,55 @@ def solution():
     # The number of ways where at least 2 boys are next to each other
     result = total_ways - no_boys_next_to_each_other_ways
     return result
+
+
+# MATH数据集
+<!-- You are a helpful python programmer.
+You will write python program to solve math problems. You will only write code blocks.
+I will give you the question and its solution, you ONLY need to translate the solution into python program.
+Here are two examples how to do it. -->
+You are a helpful python programmer.
+You will write python program to solve math problems. You will only write code blocks.
+Let's use python to solve math problems. Here are two examples how to do it.
+Question:The sphere with radius 1 and center $(0,0,1)$ rests on the $xy$-plane.  A light source is at $P = (0,-1,2).$  Then the boundary of the shadow of the sphere can be expressed in the form $y = f(x),$ for some function $f(x).$  Find the function $f(x).$
+```
+import sympy as sp
+def solution():
+    # Define the symbols
+    x, y = sp.symbols('x y')
+
+    # Equation for the boundary of the shadow
+    lhs = y + 3
+    rhs = sp.sqrt(x**2 + (y + 1)**2 + 4)
+
+    # Solve the equation y + 3 = sqrt(x^2 + (y + 1)^2 + 4)
+    equation = sp.Eq(lhs, rhs)
+    result = sp.solve(equation, y)
+
+    return result
+```
+Question:The fifth term of a geometric sequence of positive numbers is $11$ and the eleventh term is $5$. What is the eighth term of the sequence? Express your answer in simplest radical form.  [asy]\nsize(150); defaultpen(linewidth(2));\nreal loc = 0;\nfor(int i = 0; i < 11; ++i) {\n\nif(i == 4)\n\nlabel(\"$\\mathbf{\\mathit{11}}$\",(loc,0),(0.8,1.2),fontsize(14));\n\nif(i == 10)\n\nlabel(\"$\\mathbf{\\mathit{5}}$\",(loc,0),(1.2,1.2),fontsize(14));\n\nfill(box((loc,0),(loc+1,0.15)));\n\nloc += 4/3;\n}\n[/asy]
+```
+import math
+def solution()
+    # Given values
+    a_5 = 11  # fifth term
+    a_11 = 5  # eleventh term
+
+    # Calculate r^6
+    r_squared = a_11 / a_5
+    r_squared = r_squared  # r^6 = 5/11
+
+    # r^3 is the square root of r^6
+    r_cubed = math.sqrt(r_squared)
+
+    # The eighth term is 11 * r^3
+    result = a_5 * r_cubed
+
+    return result
+
+```
+How about this Question?
+Question:
+
+The Smith family has 4 sons and 3 daughters. In how many ways can they be seated in a row of 7 chairs such that at least 2 boys are next to each other?
