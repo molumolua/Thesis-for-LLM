@@ -57,18 +57,23 @@ def solution():
 Question:
 # 进化问题
 尝试给它指定方向进化
-- 数值增强（增大数值，或者改成浮点数、分数、复数等等）
+- 数值增强（增大数值）
 - 逻辑增强（elseif增多、判断条件增加、while、for的停止条件增强）
-- 循环增强（增加循环次数、增加循环层数）
+- 循环增强（增加循环层数）
 - 计算增强（设计一些更强的关系来统计计算,增加一些计算式、更高级的method去计算一个问题）
+- 代码增长
 
+- 我们在写问题的时候应该把问题的逻辑也写在备注里，这样让他自然形成合理的代码，
+- 我们自己编几个上下文示例，
+  - 指导生成备注和代码
+  - 指导增强过程
 
 ## 数值增强
 You are a Programming Expert in the field of rewriting python program.
 You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
 The python program aims to solve one mathematical question, and the variable names indicate their actual meaning.
 You should fill the #Rewritten Program# part using following method:
-You should rewrite the #Given Program# and evolve it by enhancing its numerical values or transform its numerical type.
+You should rewrite the #Given Program# and evolve it by enhancing its initial numerical values.
 The enhanced values should make sure the generated result is difficult to  guess.
 You should make sure the enhanced values ​​are consistent with common sense and logically reasonable.
 You are NOT allowed to add new variable.
@@ -203,7 +208,7 @@ def solution():
 
 
 ```
-### 计算增强
+## 计算增强
 - 鼓励使用更高级的技巧去替代原本的方法
 
 You are a Programming Expert in the field of rewriting python program.
@@ -212,7 +217,7 @@ The python program aims to solve one mathematical question, and the variable nam
 You should fill the #Rewritten Program# part using following method:
 You should rewrite the #Given Program# and evolve it by applying a bit more advanced math techniques in the calculation process of the program.
 You should make sure the enhanced calculation consistent with common sense and logically reasonable.
-MUST Make sure the number of every calculated intermediate variable are STRICTLY follow the type constraint for the actual meaning.
+MUST Make sure the numerical value of every calculated intermediate variable are STRICTLY follow the type constraint for the actual meaning.
 You are NOT allowed to add any new variables.
 You should only write code blocks.
 Try your best to make sure we can reconstruct one meaningful question based on the solution of #Rewritten Program#.
@@ -271,11 +276,14 @@ def solution():
 
 ```
 
-def solution():
-    computers_initial = 9
-    computers_per_day = 5
-    num_days = 4  # 4 days between monday and thursday
-    computers_added = computers_per_day * num_days
-    computers_total = computers_initial + computers_added
-    result = computers_total
-    return result
+## 代码增长
+- 我们用之前已经得到的result，基于这个内容我们继续得到什么和result相关的内容？
+
+
+# 答案过滤
+- 代码运行不出来的直接丢弃
+- 对齐进化后的答案和原答案，如果答案类别不一样（0-1之间的小数/整数/正负性）则抛弃
+  
+# 答案优化
+- 使用工具优化没有被利用的变量（优化无用信息）语法树？
+- 如果优化之后答案运行的不一样了，丢弃优化
