@@ -116,11 +116,12 @@ You are a Programming Expert in the field of rewriting python program.
 You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
 The python program aims to solve one mathematical question, and the variable names indicate their actual meaning.
 You should fill the #Rewritten Program# part using following method:
-You should rewrite the #Given Program# and evolve it by enhancing the logical judgment conditions.
+You should rewrite the #Given Program# and evolve it by enhancing the logical judgment conditions in the way of adding constraints.
+The added constraints MUST correspond to mathematical conception.
 You should make sure the enhanced logical judgment ​​are consistent with common sense and logically reasonable.
+Using added constraints to make validations, checks, raising errors is FORBIDDEN in #Rewritten Program#. 
 You are allowed to add new variables to make the whole program solution coherent and faithful.
-Must make sure the #Rewritten Program# aims to solve ONE definte question.
-Avoid calculating anything unnecessary.
+Try your best to make sure the enhanced program aims to solve one definite question.
 You should only write code blocks.
 #Given Program#:
 ```
@@ -169,9 +170,11 @@ You are a Programming Expert in the field of rewriting python program.
 You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
 The python program aims to solve one mathematical question, and the variable names indicate their actual meaning.
 You should fill the #Rewritten Program# part using following method:
-You should rewrite the #Given Program# and evolve it by increasing the times of loops or increasing the number of loop layers.
+You should rewrite the #Given Program# and evolve it by  increasing the number of loop layers in the program to add one new dimension.
+The increasement of the layer SHOULD ONLY be ONE.
 You should make sure the enhanced loops ​​are consistent with common sense and logically reasonable.
-You are allowed to add new variables to make the whole program solution coherent and faithful.
+The enhanced result MUST correspond to ONE mathematical explainable conception.
+Try your best to make sure the enhanced program aims to solve one definite math question.
 You should only write code blocks.
 #Given Program#:
 ```
@@ -217,8 +220,7 @@ The python program aims to solve one mathematical question, and the variable nam
 You should fill the #Rewritten Program# part using following method:
 You should rewrite the #Given Program# and evolve it by applying a bit more advanced math techniques in the calculation process of the program.
 You should make sure the enhanced calculation consistent with common sense and logically reasonable.
-MUST Make sure the numerical value of every calculated intermediate variable are STRICTLY follow the type constraint for the actual meaning.
-You are NOT allowed to add any new variables.
+MUST Make sure the numerical value of every calculated intermediate variable are STRICTLY follow the type constraint and actual meaning.
 You should only write code blocks.
 Try your best to make sure we can reconstruct one meaningful question based on the solution of #Rewritten Program#.
 #Given Program#:
@@ -278,7 +280,68 @@ def solution():
 
 ## 代码增长
 - 我们用之前已经得到的result，基于这个内容我们继续得到什么和result相关的内容？
+You are a Programming Expert in the field of rewriting python program.
+You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
+The python program aims to solve one mathematical question, and the variable names indicate their actual meaning.
+You should fill the #Rewritten Program# part using following method:
+You should rewrite the #Given Program# and evolve it by continuing writing the program a bit further and regrading the "result" as intermediate variable.
+The continuing writing should correspond to ONLY ONE step.
+You should make sure the enhanced program and the final return value are consistent with common sense and logically reasonable.
+You should only write code blocks.
+Try your best to make sure we can reconstruct one meaningful question based on the solution of #Rewritten Program#.
+#Given Program#:
+```
+import math
+def solution():
+    # Given values
+    a_5 = 17  # fifth term
+    a_11 = 8  # eleventh term
 
+    # Calculate r^6
+    r_squared = a_11 / a_5
+    r_squared = r_squared  # r^6 = 8/17
+
+    # r^3 is the square root of r^6
+    r_cubed = math.sqrt(r_squared)
+
+    # The eighth term is 17 * r^3
+    result = a_5 * r_cubed
+
+    return result
+```
+#Rewritten Program#:
+
+```
+import math
+
+def solution():
+    # Given values
+    a_5 = 17  # fifth term
+    a_11 = 8  # eleventh term
+
+    # Calculate r^6
+    r_squared = a_11 / a_5  # r^6 = 8/17
+    r_squared = r_squared  # This is r^6
+
+    # r^3 is the square root of r^6
+    r_cubed = math.sqrt(r_squared)
+
+    # The eighth term is 17 * r^3
+    eighth_term = a_5 * r_cubed
+
+    # Calculate the first term using the general geometric progression formula
+    # a_n = a_1 * r^(n-1)
+    # Using a_5, we can find a_1
+    a_1 = a_5 / (r_cubed ** 4)  # a_5 = a_1 * r^4 => a_1 = a_5 / r^4
+
+    # Compute the sum of the first six terms (S_6) in the geometric progression
+    S_6 = a_1 * (1 - r_cubed**6) / (1 - r_cubed)  # Sum of first 6 terms of geometric progression
+
+    # Calculate the difference between the sum of first six terms and eighth term
+    result = S_6 - eighth_term
+
+    return result
+```
 
 # 答案过滤
 - 代码运行不出来的直接丢弃
@@ -287,3 +350,6 @@ def solution():
 # 答案优化
 - 使用工具优化没有被利用的变量（优化无用信息）语法树？
 - 如果优化之后答案运行的不一样了，丢弃优化
+
+
+# 进化选择
