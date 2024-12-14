@@ -428,17 +428,20 @@ How about this program?
 ```
 #Rewritten Program#:
 
-# 循环增强
-- 删除循环增强，不合理。
-- 改成维度增强，添加天级维度、增加一个z轴之类的。
+
+# 维度增强（新的角度、维度）
+- 改成维度增强，添加天级维度、增加一个z轴、增加一个变量。
 You are a Programming Expert in the field of rewriting python program.
 You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
 The python program aims to solve one mathematical question, and the variable names indicate their actual meaning.
 You should fill the #Rewritten Program# part using following method:
-You should rewrite the #Given Program# and evolve it by increasing the times of loops or increasing the number of loop layers to add one new dimension.
-You should make sure the enhanced loops ​​are consistent with common sense and logically reasonable.
-You are allowed to add new variables to make the whole program solution coherent and faithful.
-You should only write code blocks.
+You should rewrite the #Given Program# and evolve it by introducing one new dimension into the process of the python program.
+The new dimension should correspond to a new aspect or a new coordinate to the solution.
+The #Rewritten Program# should aim to solve another rational mathematical question.
+You MUST make sure the enhanced dimension ​​are consistent with common sense and logically reasonable.
+Try your best to  make sure the whole program solution is coherent and faithful.
+You MUST only write code blocks.
+Here is one example how to do it.
 #Given Program#:
 ```
 import math
@@ -471,6 +474,7 @@ def solution():
     k = 0  # center's y-coordinate
     focus_y = 6  # y-coordinate of the focus
     vertex_y = -3  # y-coordinate of the vertex
+    point_y = 4  # y-coordinate of a point on the hyperbola
 
     # Distance from center to focus (c) and center to vertex (a)
     c = abs(focus_y - k)
@@ -480,21 +484,22 @@ def solution():
     b_squared = c**2 - a**2
     b = math.sqrt(b_squared)
 
-    # Adding a new loop to simulate multiple hyperbolas with varying vertex_y values
-    total_sum = 0
-    for new_vertex_y in range(vertex_y - 3, vertex_y + 3):  # New loop to simulate changes in vertex_y
-        # Update a with new vertex_y value
-        a = abs(new_vertex_y - k)
-        
-        # Recalculate b for the new vertex_y value
-        b_squared = c**2 - a**2
-        b = math.sqrt(b_squared)
-        
-        # Calculate the sum for this new hyperbola configuration
-        total_sum += (h + k + a + b)
+    # Equation of the hyperbola: (y - k)^2 / a^2 - (x - h)^2 / b^2 = 1
+    # Solving for the x-coordinate of a given point_y
 
-    return total_sum
+    # Rearranging for x^2:
+    x_squared = b**2 * (1 + ((point_y - k)**2 / a**2))
+
+    # Calculate x-coordinate
+    x = math.sqrt(x_squared)  # Taking the positive root for simplicity
+    # Calculate the sum h + k + a + b + x
+    result = h + k + a + b + x
+
+    return result
 ```
+#Given Program#:
+<Here is the program.>
+#Rewritten Program#:
 
 # 代码续写
 You are a Programming Expert in the field of rewriting python program.
@@ -618,6 +623,22 @@ def solution():
 ```
 #Rewritten Program#:
 # 方法加强
+You are a Programming Expert in the field of rewriting python program.
+You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
+The python program aims to solve one mathematical question, and the variable names indicate their actual meaning.
+You should fill the #Rewritten Program# part using following method:
+You should rewrite the #Given Program# and evolve it by applying a bit more advanced math techniques in the calculation process of the program.
+You should make sure the enhanced calculation consistent with common sense and logically reasonable.
+MUST Make sure the numerical value of every calculated intermediate variable are STRICTLY follow the type constraint for the actual meaning.
+You are NOT allowed to add any new variables.
+You should only write code blocks.
+Try your best to make sure we can reconstruct one meaningful question based on the solution of #Rewritten Program#.
+Here are three examples how to do it.
+#Given Program#:
+<Here is the program.>
+#Rewritten Program#:
+
+## in-context 版本
 You are a Programming Expert in the field of rewriting python program.
 You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
 The python program aims to solve one mathematical question, and the variable names indicate their actual meaning.
@@ -893,4 +914,73 @@ def solution():
 #Given Program#:
 ```
 <Here is the Program.>
+```
+
+
+# 循环增强
+- 删除循环增强，不合理。
+- 改成维度增强，添加天级维度、增加一个z轴之类的。
+You are a Programming Expert in the field of rewriting python program.
+You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
+The python program aims to solve one mathematical question, and the variable names indicate their actual meaning.
+You should fill the #Rewritten Program# part using following method:
+You should rewrite the #Given Program# and evolve it by increasing the times of loops or increasing the number of loop layers to add one new dimension.
+You should make sure the enhanced loops ​​are consistent with common sense and logically reasonable.
+You are allowed to add new variables to make the whole program solution coherent and faithful.
+You should only write code blocks.
+#Given Program#:
+```
+import math
+def solution():
+    # Given values
+    h = 2  # center's x-coordinate
+    k = 0  # center's y-coordinate
+    focus_y = 6  # y-coordinate of the focus
+    vertex_y = -3  # y-coordinate of the vertex
+
+    # Distance from center to focus (c) and center to vertex (a)
+    c = abs(focus_y - k)
+    a = abs(vertex_y - k)
+
+    # For a hyperbola, c^2 = a^2 + b^2
+    b_squared = c**2 - a**2
+    b = math.sqrt(b_squared)
+
+    # Calculate the sum h + k + a + b
+    result = h + k + a + b
+
+    return result
+```
+#Rewritten Program#:
+```
+import math
+def solution():
+    # Given values
+    h = 2  # center's x-coordinate
+    k = 0  # center's y-coordinate
+    focus_y = 6  # y-coordinate of the focus
+    vertex_y = -3  # y-coordinate of the vertex
+
+    # Distance from center to focus (c) and center to vertex (a)
+    c = abs(focus_y - k)
+    a = abs(vertex_y - k)
+
+    # For a hyperbola, c^2 = a^2 + b^2
+    b_squared = c**2 - a**2
+    b = math.sqrt(b_squared)
+
+    # Adding a new loop to simulate multiple hyperbolas with varying vertex_y values
+    total_sum = 0
+    for new_vertex_y in range(vertex_y - 3, vertex_y + 3):  # New loop to simulate changes in vertex_y
+        # Update a with new vertex_y value
+        a = abs(new_vertex_y - k)
+        
+        # Recalculate b for the new vertex_y value
+        b_squared = c**2 - a**2
+        b = math.sqrt(b_squared)
+        
+        # Calculate the sum for this new hyperbola configuration
+        total_sum += (h + k + a + b)
+
+    return total_sum
 ```
