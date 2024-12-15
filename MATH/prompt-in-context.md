@@ -140,14 +140,20 @@ How about this question?
 Question:<Here is the Question.>
 
 # 反写问题
-You are a Mathematics Expert in the field of question reconstruction.
-You target is to reconstruct the question based on corresponding python program solution.
-You should fill the #Question 4# using following method:
-You should mainly follow the relationship between variables and true value of variable symbols to reconstruct the question.
-You MUST check the information in the program detailedly and make sure we can solve the question with the program.
-You are not allowed to indicate ANY process of the solution in the #Question 4#.
-You are not allowed to instruct how to perform calculations in the #Question 4#.
-Here are three examples how to do it.
+You are a Mathematics Expert specializing in question reconstruction.
+
+Your goal is to reconstruct the original mathematical question based on a corresponding Python program solution. The reconstructed question should restore the problem's background as much as possible and retain the difficulty involved in obtaining the initial variable assignments.
+
+Follow the method below to complete the #Question 4# section:
+
+1. Analyze the #Given Program 4# thoroughly, focusing on the relationships between variables and their actual values.
+2. Reconstruct the problem background and context based on the information inferred from the program.
+3. Ensure that the complexity and difficulty of initial variable assignments are preserved in the reconstructed question.
+4. Ensure that the reconstructed question can be solved using the provided program.
+5. DO NOT include ANY part of the solution process, including formulas, equations, or calculation methods in the #Question 4#.
+6. DO NOT provide instructions on how to perform calculations or mention any mathematical operations explicitly in the #Question 4#.
+7. Provide a clear and concise mathematical question that aligns with the functionality and variable relationships of the program.
+Here are three examples of how to do it.
 #Program 1#:
 ```
 import math
@@ -371,18 +377,34 @@ How about this program?
 #Rewritten Program#:
 
 
-# 逻辑增强
-You are a Programming Expert in the field of rewriting python program.
-You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
-The python program aims to solve one mathematical question, and the variable names indicate their actual meaning.
-You should fill the #Rewritten Program# part using following method:
-You should rewrite the #Given Program# and evolve it by enhancing the logical judgment conditions in the way of adding constraints.
-The added constraints MUST correspond to mathematical conception.
-You should make sure the enhanced logical judgment ​​are consistent with common sense and logically reasonable.
-Using added constraints to make validations, checks, raising errors is FORBIDDEN in #Rewritten Program#. 
-You are allowed to add new variables to make the whole program solution coherent and faithful.
-Try your best to make sure the enhanced program aims to solve one definite question.
-You should only write code blocks.
+# 逻辑增强(增加额外的约束条件)
+You are a programming expert specializing in rewriting Python programs.
+
+Your goal is to slightly transform a given Python program to make it marginally more complex and challenging for AI systems to handle, while still solving a reasonable and well-defined mathematical problem.
+
+The Python program solves a specific mathematical question, and the variable names clearly represent their intended meaning.
+
+Follow the method below to complete the #Rewritten Program# section:
+
+1. Rewrite the #Given Program# by enhancing its logical conditions through the addition of ONLY ONE constraint, ensuring that the change are minimal and only parts of the program are modified.
+2. The added constraint MUST align with mathematical concepts.
+3. Ensure that the enhanced logical conditions remain consistent with common sense and are logically reasonable.
+4. DO NOT use the added constraint for validations, checks, or raising errors in the #Rewritten Program#.
+5. Ensure that numerical types and their real-world meanings correspond accurately.
+6. Ensure that all intermediate variables produced at each step have reasonable numerical values that make sense within the context of the mathematical problem.
+7. The rewritten program MUST solve a reasonable and well-defined mathematical problem.
+8. You may introduce new variables as needed to maintain coherence and fidelity of the program's solution.
+9. Provide only code blocks.
+
+#Given Program#:
+<Here is the program.>
+#Rewritten Program#:
+
+
+
+
+
+## in-context版本 
 Here is one example how to do it.
 #Given Program#:
 ```
@@ -441,6 +463,11 @@ The #Rewritten Program# should aim to solve another rational mathematical questi
 You MUST make sure the enhanced dimension ​​are consistent with common sense and logically reasonable.
 Try your best to  make sure the whole program solution is coherent and faithful.
 You MUST only write code blocks.
+#Given Program#:
+<Here is the program.>
+#Rewritten Program#:
+
+## in-context 版本
 Here is one example how to do it.
 #Given Program#:
 ```
@@ -502,15 +529,27 @@ def solution():
 #Rewritten Program#:
 
 # 代码续写
-You are a Programming Expert in the field of rewriting python program.
-You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
-The python program aims to solve one mathematical question, and the variable names indicate their actual meaning.
-You should fill the #Rewritten Program# part using following method:
-You should rewrite the #Given Program# and evolve it by continuing writing the program a bit further and regrading the "result" as intermediate variable.
-The continuing writing should correspond to ONLY ONE step.
-You should make sure the enhanced program and the final return value are consistent with common sense and logically reasonable.
-You should only write code blocks.
-Try your best to make sure we can reconstruct one meaningful question based on the solution of #Rewritten Program#.
+You are a programming expert specializing in rewriting Python programs.
+
+Your goal is to slightly transform a given Python program to make it marginally more complex and challenging for AI systems to handle, while still solving a reasonable and well-defined mathematical problem.
+
+The Python program solves a specific mathematical question, and the variable names clearly represent their intended meaning.
+
+Follow the method below to complete the #Rewritten Program# section:
+
+1. Rewrite the #Given Program# by adding new code at the end of the original program, making the original program a part of the enhanced program.
+2. Ensure that the numerical values of every calculated intermediate variable strictly follow the type constraints corresponding to their actual meaning.
+3. Ensure that the rewritten program allows for the reconstruction of a meaningful mathematical question based on its solution.
+4. The addition of program should correspond to ONLY ONE mathematical step.
+5. ONLY return ONE variable and the name MUST be "result".
+6. Provide only code blocks.
+
+#Given Program#:
+<Here is the program.>
+#Rewritten Program#:
+
+
+## in-context版本
 Here are two examples how to do it.
 #Given Program#:
 ```
@@ -622,6 +661,28 @@ def solution():
 <Here is the program.>
 ```
 #Rewritten Program#:
+
+# 破开条件
+You are a programming expert specializing in rewriting Python programs.
+
+Your goal is to slightly transform a given Python program to make it marginally more complex and challenging for AI systems to handle, while still solving a reasonable and well-defined mathematical problem.
+
+The Python program solves a specific mathematical question, and the variable names clearly represent their intended meaning.
+
+Follow the method below to complete the #Rewritten Program# section: 
+1. Rewrite the #Given Program# by adding new code in the begining of the program, making the original program a part of the enhanced program.
+2. The addition of new code should first remove the direct definition of the randomly chosen initial variable and then  add new step(s) to compute the value of the eliminated variable.
+3. Introducing new variables as needed to perform the addition is allowed.
+4. Ensure that the numerical values of every calculated intermediate variable strictly follow the type constraints corresponding to their actual meaning.
+5. Ensure that the rewritten program allows for the reconstruction of a meaningful mathematical question based on its solution.
+6. The addition of program should correspond to ONLY ONE mathematical step.
+7. ONLY return ONE variable and the name MUST be "result".
+8. Provide only code blocks.
+
+#Given Program#:
+<Here is the program.>
+#Rewritten Program#:
+
 # 方法加强
 You are a Programming Expert in the field of rewriting python program.
 You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
@@ -637,6 +698,27 @@ Here are three examples how to do it.
 #Given Program#:
 <Here is the program.>
 #Rewritten Program#:
+
+You are a programming expert specializing in rewriting Python programs.
+
+Your goal is to slightly transform a given Python program to make it marginally more complex and challenging for AI systems to handle, while still solving a reasonable and well-defined mathematical problem.
+
+The Python program solves a specific mathematical question, and the variable names clearly represent their intended meaning.
+
+Follow the method below to complete the #Rewritten Program# section:
+
+1. Rewrite the #Given Program# by applying slightly more advanced mathematical techniques, ensuring that changes are minimal and only parts of the program are modified.
+2. The applied mathematical techniques SHOULD align with standard mathematical concepts.
+3. Ensure that the enhanced calculations remain consistent with common sense and are logically reasonable.
+4. Ensure that the numerical values of every calculated intermediate variable strictly follow the type constraints corresponding to their actual meaning.
+5. Ensure that the rewritten program allows for the reconstruction of a meaningful mathematical question based on its solution.
+6. Try your best to make sure we can reconstruct one meaningful question based on the solution of #Rewritten Program#.
+7. You should only write code blocks.
+
+#Given Program#:
+<Here is the program.>
+#Rewritten Program#:
+
 
 ## in-context 版本
 You are a Programming Expert in the field of rewriting python program.
