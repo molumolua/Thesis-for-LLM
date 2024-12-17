@@ -183,7 +183,7 @@ def solution():
 Question:Given two points in a three-dimensional space, one point has coordinates (5, 8, -3). If the midpoint of the line segment connecting these two points is (3.5, 4.5, -3.5), find the distance between these two points.
 # evolve 2
 - wizardLM中随机选一个，我们可以让模型评估我们的问题和solution的质量，取一个最具有教育意义的进化。
-- 这里偷懒，我认为破开条件是进化的最好的。
+- 这里偷懒，我认为破开条件是进化的最好的。或者我们也可以看看随机的效果怎么样。
 
 ## 原始问题
 Question:Given two points in a three-dimensional space, one point has coordinates (5, 8, -3). If the midpoint of the line segment connecting these two points is (3.5, 4.5, -3.5), find the distance between these two points.
@@ -209,5 +209,19 @@ def solution():
     result = distance
     return result
 ```
+## 数值增强
+## 逻辑增强
+## 维度增强
+## 方法加强
+## 代码续写
+## 条件破开
+
+# evolve3
+## 原始问题
 
 ## 数值增强
+## 逻辑增强
+## 维度增强
+## 方法加强
+## 代码续写
+## 条件破开
