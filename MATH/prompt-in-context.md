@@ -461,6 +461,7 @@ You should rewrite the #Given Program# and evolve it by introducing one new dime
 The new dimension should correspond to a new aspect or a new coordinate to the solution.
 The #Rewritten Program# should aim to solve another rational mathematical question.
 You MUST make sure the enhanced dimension ​​are consistent with common sense and logically reasonable.
+ONLY return ONE variable and the name MUST be "result".
 Try your best to  make sure the whole program solution is coherent and faithful.
 You MUST only write code blocks.
 #Given Program#:
@@ -701,20 +702,20 @@ Here are three examples how to do it.
 
 You are a programming expert specializing in rewriting Python programs.
 
-Your goal is to slightly transform a given Python program to make it marginally more complex and challenging for AI systems to handle, while still solving a reasonable and well-defined mathematical problem.
+Your goal is to slightly transform a given Python program by incorporating more advanced mathematical theories and techniques, making it marginally more complex and challenging for AI systems to handle, while still solving a reasonable and well-defined mathematical problem.
 
 The Python program solves a specific mathematical question, and the variable names clearly represent their intended meaning.
 
 Follow the method below to complete the #Rewritten Program# section:
 
-1. Rewrite the #Given Program# by applying slightly more advanced mathematical techniques, ensuring that changes are minimal and only parts of the program are modified.
+1. Rewrite the #Given Program# by integrating a bit more sophisticated mathematical theories and techniques, ensuring that changes are minimal and only parts of the program are modified.
 2. The applied mathematical techniques SHOULD align with standard mathematical concepts.
 3. Ensure that the enhanced calculations remain consistent with common sense and are logically reasonable.
 4. Ensure that the numerical values of every calculated intermediate variable strictly follow the type constraints corresponding to their actual meaning.
 5. Ensure that the rewritten program allows for the reconstruction of a meaningful mathematical question based on its solution.
 6. Try your best to make sure we can reconstruct one meaningful question based on the solution of #Rewritten Program#.
-7. You should only write code blocks.
-
+7. ONLY return ONE variable and the name MUST be "result".
+8. You should only write code blocks.
 #Given Program#:
 <Here is the program.>
 #Rewritten Program#:

@@ -2,26 +2,22 @@ import sympy as sp
 
 import sympy as sp
 import math
+import sympy as sp
+
+import sympy as sp
+
+import math
 def solution():
-    # Given values
-    focus_y = 6  # y-coordinate of the focus
-    vertex_y = -3  # y-coordinate of the vertex
+    # Coordinates of the points
+    x1, y1, z1 = 2, 1, -4
+    x2, y2, z2 = 5, 8, -3
 
-    # Intermediate step: Calculate k (center's y-coordinate) as the midpoint of focus_y and vertex_y
-    k = (focus_y + vertex_y) / 2
+    # Distance formula: sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2)
+    distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
+    return distance
 
-    # Distance from center to focus (c) and center to vertex (a)
-    c = abs(focus_y - k)
-    a = abs(vertex_y - k)
 
-    # For a hyperbola, c^2 = a^2 + b^2
-    b_squared = c**2 - a**2
-    b = math.sqrt(b_squared)
 
-    # Calculate the sum h + k + a + b
-    h = 2  # center's x-coordinate
-    result = h + k + a + b
-    return result
 
 
 
