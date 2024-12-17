@@ -9,7 +9,7 @@
 }
 ```
 # 获取解决方案
-- 计划过滤获取正确答案的问题。
+- 计划过滤获取正确答案的问题，或者我们手工debug不正确的一部分再加进去做初始solution。
 ```
 import math
 def solution():
@@ -22,6 +22,7 @@ def solution():
     return distance
 ```
 # evolve 1
+- 计划使用GPT4 验证答案，答案正确就认为他对了。
 ## 数值增强
 ```python
 import math
@@ -140,5 +141,73 @@ def solution():
 
 ```
 - 其实没有信息增益
+## 代码续写
+```
+import math
+def solution():
+    # Coordinates of the points
+    x1, y1, z1 = 2, 1, -4
+    x2, y2, z2 = 5, 8, -3
+
+    # Distance formula: sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2)
+    distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
+
+    # Adding a mathematical step: calculate the cube of the distance
+    result = distance ** 3
+    return result
+```
+Question:Consider two points in three-dimensional space with coordinates (2,1,−4) and (5,8,−3). Calculate the cube of the distance between these two points.
+## 破开条件
+```
+import math
+
+def solution():
+    # Coordinates of one point
+    x2, y2, z2 = 5, 8, -3
+
+    # Define mid-point coordinates assuming midpoint (mx, my, mz) where x1, y1, z1 is another point
+    mx, my, mz = 3.5, 4.5, -3.5
+
+    # Using midpoint formula to calculate x1, y1, z1
+    # Midpoint formula: mx = (x1 + x2) / 2 => x1 = 2*mx - x2
+    # Similarly for y and z
+    x1 = 2 * mx - x2
+    y1 = 2 * my - y2
+    z1 = 2 * mz - z2
+
+    # Distance formula: sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2)
+    distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
+    result = distance
+    return result
+```
+Question:Given two points in a three-dimensional space, one point has coordinates (5, 8, -3). If the midpoint of the line segment connecting these two points is (3.5, 4.5, -3.5), find the distance between these two points.
 # evolve 2
-- wizardLM中随机选一个，我让模型评估我们的问题和solution的质量，取一个最具有教育意义的进化。
+- wizardLM中随机选一个，我们可以让模型评估我们的问题和solution的质量，取一个最具有教育意义的进化。
+- 这里偷懒，我认为破开条件是进化的最好的。
+
+## 原始问题
+Question:Given two points in a three-dimensional space, one point has coordinates (5, 8, -3). If the midpoint of the line segment connecting these two points is (3.5, 4.5, -3.5), find the distance between these two points.
+```
+import math
+
+def solution():
+    # Coordinates of one point
+    x2, y2, z2 = 5, 8, -3
+
+    # Define mid-point coordinates assuming midpoint (mx, my, mz) where x1, y1, z1 is another point
+    mx, my, mz = 3.5, 4.5, -3.5
+
+    # Using midpoint formula to calculate x1, y1, z1
+    # Midpoint formula: mx = (x1 + x2) / 2 => x1 = 2*mx - x2
+    # Similarly for y and z
+    x1 = 2 * mx - x2
+    y1 = 2 * my - y2
+    z1 = 2 * mz - z2
+
+    # Distance formula: sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2)
+    distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
+    result = distance
+    return result
+```
+
+## 数值增强
