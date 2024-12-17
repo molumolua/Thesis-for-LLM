@@ -386,19 +386,20 @@ The Python program solves a specific mathematical question, and the variable nam
 
 Follow the method below to complete the #Rewritten Program# section:
 
-1. Rewrite the #Given Program# by enhancing its logical conditions through the addition of ONLY ONE constraint, ensuring that the change are minimal and only parts of the program are modified.
-2. The added constraint MUST align with mathematical concepts.
-3. Ensure that the enhanced logical conditions remain consistent with common sense and are logically reasonable.
+1. Rewrite the #Given Program# by enhancing its logical conditions through the addition of ONLY ONE constraint that is directly related to the mathematical concepts of the problem and provides information gain. Ensure that the changes are minimal and only parts of the program are modified.
+2. The added constraint MUST ALIGN WITH MATHEMATICAL CONCEPTS relevant to the problem and influence the program's behavior meaningfully.
+3. Ensure that the enhanced logical conditions remain consistent with common sense and are logically reasonable within the mathematical context.
 4. DO NOT use the added constraint for validations, checks, or raising errors in the #Rewritten Program#.
 5. Ensure that numerical types and their real-world meanings correspond accurately.
 6. Ensure that all intermediate variables produced at each step have reasonable numerical values that make sense within the context of the mathematical problem.
-7. The rewritten program MUST solve a reasonable and well-defined mathematical problem.
+7. The rewritten program MUST SOLVE A REASONABLE AND WELL-DEFINED MATHEMATICAL PROBLEM.
 8. You may introduce new variables as needed to maintain coherence and fidelity of the program's solution.
-9. Provide only code blocks.
-
+9. ONLY return ONE variable and the name MUST be "result".
+10. Provide only code blocks.
 #Given Program#:
 <Here is the program.>
 #Rewritten Program#:
+
 
 
 
@@ -538,16 +539,18 @@ The Python program solves a specific mathematical question, and the variable nam
 
 Follow the method below to complete the #Rewritten Program# section:
 
-1. Rewrite the #Given Program# by adding new code at the end of the original program, making the original program a part of the enhanced program.
-2. Ensure that the numerical values of every calculated intermediate variable strictly follow the type constraints corresponding to their actual meaning.
-3. Ensure that the rewritten program allows for the reconstruction of a meaningful mathematical question based on its solution.
-4. The addition of program should correspond to ONLY ONE mathematical step.
-5. ONLY return ONE variable and the name MUST be "result".
-6. Provide only code blocks.
+1. Append new code at the end of the original program, ensuring the original code remains a part of the enhanced program.
+2. The new code should correspond to ONE additional mathematical step that extends the problem's solution.
+3. You may make minor modifications to the existing code if necessary to accommodate the new step.
+4. Ensure that all numerical values of every calculated intermediate variable strictly follow the type constraints corresponding to their actual meaning.
+5. Ensure that the rewritten program allows for the reconstruction of a meaningful mathematical question based on its solution.
+6. ONLY return one variable named "result".
+7. Provide only code blocks.
 
 #Given Program#:
 <Here is the program.>
 #Rewritten Program#:
+- 这个代码续写还没有在evolve1和evolve2上测试。
 
 
 ## in-context版本
@@ -685,7 +688,7 @@ Follow the method below to complete the #Rewritten Program# section:
 #Rewritten Program#:
 
 # 方法加强
-You are a Programming Expert in the field of rewriting python program.
+<!-- You are a Programming Expert in the field of rewriting python program.
 You target is to rewrite one python program to make it evolve into a bit more difficult one for AI systems to handle.
 The python program aims to solve one mathematical question, and the variable names indicate their actual meaning.
 You should fill the #Rewritten Program# part using following method:
@@ -698,7 +701,7 @@ Try your best to make sure we can reconstruct one meaningful question based on t
 Here are three examples how to do it.
 #Given Program#:
 <Here is the program.>
-#Rewritten Program#:
+#Rewritten Program#: -->
 
 You are a programming expert specializing in rewriting Python programs.
 
