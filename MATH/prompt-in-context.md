@@ -550,7 +550,6 @@ Follow the method below to complete the #Rewritten Program# section:
 #Given Program#:
 <Here is the program.>
 #Rewritten Program#:
-- 这个代码续写还没有在evolve1和evolve2上测试。
 
 
 ## in-context版本
@@ -673,18 +672,20 @@ Your goal is to slightly transform a given Python program to make it marginally 
 
 The Python program solves a specific mathematical question, and the variable names clearly represent their intended meaning.
 
-Follow the method below to complete the #Rewritten Program# section: 
-1. Rewrite the #Given Program# by adding new code in the begining of the program, making the original program a part of the enhanced program.
-2. The addition of new code should first remove the direct definition of the randomly chosen initial variable and then  add new step(s) to compute the value of the eliminated variable.
-3. Introducing new variables as needed to perform the addition is allowed.
-4. Ensure that the numerical values of every calculated intermediate variable strictly follow the type constraints corresponding to their actual meaning.
-5. Ensure that the rewritten program allows for the reconstruction of a meaningful mathematical question based on its solution.
-6. The addition of program should correspond to ONLY ONE mathematical step.
-7. ONLY return ONE variable and the name MUST be "result".
-8. Provide only code blocks.
+Follow the method below to complete the #Rewritten Program# section:
 
-#Given Program#:
-<Here is the program.>
+1. Rewrite the #Given Program# by adding new code at the beginning of the program.
+2. The addition of new code should first replace the direct definition of a randomly chosen initial variable and then add new step(s) to compute the value of the eliminated variable.
+3. The added new code MUST provide additional information or functionality beyond the original program's scope.
+4. Introducing new variables as needed to perform the addition is allowed.
+5. Ensure that the numerical values of every calculated intermediate variable adhere to the type constraints corresponding to their actual meaning, allowing for derived or computed values instead of fixed numbers. 
+6. Ensure that the rewritten program allows for the reconstruction of a meaningful mathematical question based on its solution.
+7. The addition of program should correspond to ONLY ONE mathematical step.
+8. ONLY return ONE variable and the name MUST be "result".
+9.  Provide only code blocks.
+
+#Given Program#: 
+<Here is the program.> 
 #Rewritten Program#:
 
 # 方法加强
